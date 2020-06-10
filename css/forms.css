@@ -1,0 +1,103 @@
+/****************************************************************************
+ * Copyright (C) 2020, Sarah-Jane Whittaker (sarah@cs.queensu.ca)
+ *
+ * This program is free software: you can redistribute it and/or modify it 
+ * under the terms of the GNU Affero General Public License as published by 
+ * the Free Software Foundation, either version 3 of the License, or (at 
+ * your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero 
+ * General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License 
+ * along with this program in the file gnu-agpl-3.0.txt. If not, 
+ * see <https://www.gnu.org/licenses/>.
+ * 
+ * This program was developed with the input and support of the Queen's
+ * University School of Computing <https://www.cs.queensu.ca/>, Faculty
+ * of Arts and Science <https://www.queensu.ca/artsci/> and the Office of 
+ * the Vice-Provost (Teaching and Learning) 
+ * <https://www.queensu.ca/provost/teaching-and-learning>.
+ ***************************************************************************/
+
+
+/****************************************************************************
+ * Basic Form Controls
+ ***************************************************************************/
+select, input[type=text], textarea {
+    display: block;
+}
+
+input[type=text], textarea {
+    width: 100%;
+}
+
+input[type=text] {
+    max-width: 768px;
+    max-width: var(--breakpoint-sm);
+}
+
+textarea {
+    padding: 0.25rem;
+}
+
+
+/****************************************************************************
+ * Custom
+ ***************************************************************************/
+.qsc-core-form-help-text,
+.qsc-core-form-error-text {
+    font-size: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+form span.required,
+form span.error {
+    font-weight: bold;
+}
+
+.form-section {
+    background-color: #f2f2f2;
+    box-shadow: 1px 1px 1px 0 #ddd;
+    max-width: 1440px;
+    max-width: var(--breakpoint-xl);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;    
+}
+
+.fa-required {
+    font-size: 0.5em;
+    vertical-align: 110%;
+}
+
+.transfer-button-column {
+    text-align: center;
+}
+
+.transfer-button-column input[type=button] {
+    margin-bottom: 1rem;
+}
+
+.qsc-core-form-check-inline {
+    display: inline-block;
+    padding: 0 0 0 1.5rem;
+}
+
+.qsc-core-form-check-inline:first-child {
+    padding-left: 0;
+}
+
+.qsc-core-form-check-input {
+    
+}
+
+.qsc-core-form-check-input + label {
+    vertical-align: middle;
+    margin-bottom: 0.5em;
+}
+
+
+

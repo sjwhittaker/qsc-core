@@ -1,0 +1,27 @@
+###########
+# Project #
+###########
+nbproject
+
+
+#######
+# CSS #
+#######
+css/fonts
+css/bootstrap.*
+css/fontawesome.*
+css/solid.css
+
+
+######
+# JS #
+######
+js/bootstrap.*
+js/jquery-*.*
+js/config.js
+
+
+#######
+# PHP #
+#######
+config.php

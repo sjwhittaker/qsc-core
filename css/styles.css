@@ -1,0 +1,54 @@
+/****************************************************************************
+ * Copyright (C) 2020, Sarah-Jane Whittaker (sarah@cs.queensu.ca)
+ *
+ * This program is free software: you can redistribute it and/or modify it 
+ * under the terms of the GNU Affero General Public License as published by 
+ * the Free Software Foundation, either version 3 of the License, or (at 
+ * your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero 
+ * General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License 
+ * along with this program in the file gnu-agpl-3.0.txt. If not, 
+ * see <https://www.gnu.org/licenses/>.
+ * 
+ * This program was developed with the input and support of the Queen's
+ * University School of Computing <https://www.cs.queensu.ca/>, Faculty
+ * of Arts and Science <https://www.queensu.ca/artsci/> and the Office of 
+ * the Vice-Provost (Teaching and Learning) 
+ * <https://www.queensu.ca/provost/teaching-and-learning>.
+ ***************************************************************************/
+
+/******************************************************************************/
+/* Variables */
+/* Bootstrap colour variables and font families are overridden
+/******************************************************************************/
+:root {
+  --navy: #11335d;
+  --blue: #2369c0;  
+  --indigo: #28335d;  
+  --purple: #622e88;  
+  --pink: #cd1137;  
+  --red: #b81137;  
+  --orange: #d7773a;  
+  --yellow: #febe10;  
+  --green: #00a351;
+  --teal: #00a3a7;
+  --cyan: #00a37d;    
+  --gray: #6c6c6c;
+  --gray-dark: #393939;  
+  --primary: #2369c0;
+  --secondary: #b81137;
+  --success: #2369c0;
+  --info: #11335d;
+  --warning: #febe10;
+  --danger: #b81137;  
+  --light: #fefefe;  
+  --dark: #121212;
+  --font-family-serif: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", Calluna, "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;    
+  --font-family-sans-serif: "Roboto", "Helvetica Neue", HelveticaNeue, Helvetica, "Liberation Sans", LiberationSans, Arial, sans-serif;    
+}
+
