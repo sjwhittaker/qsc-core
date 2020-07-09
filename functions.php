@@ -435,3 +435,16 @@ function qsc_core_convert_decimal_to_roman_numeral($decimal) {
     return str_repeat($high, $quotient).$roman_numeral; 
 }
 
+
+/**
+ * This function provides an option for handling return values that could be
+ * null. For example, the string 'None' could be used when requesting a value
+ * to display to the user.
+ * 
+ * @param type $value
+ * @param type $noneOption
+ * @return type
+ */
+function qsc_core_get_none_if_empty($value, $noneOption = null) {
+    return ($value ? $value : $noneOption);
+}

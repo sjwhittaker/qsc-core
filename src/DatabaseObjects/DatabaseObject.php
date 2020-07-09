@@ -46,20 +46,15 @@ abstract class DatabaseObject {
     /**************************************************************************
      * Static Functions
      **************************************************************************/
-    /** 
-     * This is intended for use by inherited classes with properties that
-     * may be null. It provides an option for returning an alternative to null.
-     * For example, the string 'None' could be used when requesting a value
-     * to display to the user.
+    /**
+     * This function uses the values in a database row (i.e., an associative
+     * array) to create a new object and set the values of the member 
+     * variables. It must be implemented by all descendants to handle their
+     * specific needs.
      *
-     * @param $value           The value to text
-     * @param $noneOption      The substitute value for null (default of null)
-     * @return                 The value if it's not null; the noneOption
-     *                         otherwise
+     * @param $dbRowArray        The row from the database
      */
-     protected static function getNoneIfEmpty($value, $noneOption = null) {
-         return ($value ? $value : $noneOption);
-     }
+    public abstract static function buildFromDBRow($dbRowArray);
      
  
     /**************************************************************************
@@ -70,9 +65,28 @@ abstract class DatabaseObject {
      *
      * @param $argDBID         The integer or string ID
      */ 
-     protected function __construct($argDBID) {
-         $this->dbID = $argDBID;
-     }
+    protected function __construct($argDBID) {
+        $this->dbID = $argDBID;
+    }
+    
+    
+    /*************************************************************************
+     * Initialize
+     *************************************************************************/
+    /**
+     * Some database objects are too complicated to be properly 'initialized'
+     * in the constructor. This function is a placeholder for descendants
+     * to override *if* they need to query the DatabaseManager to complete
+     * themselves.
+     * 
+     * This function should be called in conjunction with the constructor or
+     * buildFromDBRow(...) to create and initialize objects.
+     * 
+     * @param type $dbManager
+     * @param type $argArray
+     */
+    public function initialize($dbManager, $argArray = array()) {
+    }     
 
      
     /**************************************************************************
@@ -83,9 +97,9 @@ abstract class DatabaseObject {
      *
      * @return      The string or numeric database ID
      */ 
-     public function getDBID() {
+    public function getDBID() {
         return $this->dbID;   
-     }
+    }
      
           
     /**************************************************************************
