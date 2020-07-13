@@ -42,6 +42,25 @@ abstract class DatabaseManager {
 
 
     /**************************************************************************
+     * Static Functions
+     **************************************************************************/
+    /**
+     * 
+     * @param type $rowArray
+     * @param type $columnKey
+     * @return type
+     */
+    public static function extractValueFromDBRows($rowArray, $columnKey) {
+        $valueArray = array();
+        foreach ($rowArray as $row) {
+            $valueArray[] = $row[$columnKey];
+        }
+
+        return $valueArray;
+    }
+    
+    
+    /**************************************************************************
      * Member Variables
      **************************************************************************/
     protected $pdo = null;

@@ -55,6 +55,19 @@ abstract class DatabaseObject {
      * @param $dbRowArray        The row from the database
      */
     public abstract static function buildFromDBRow($dbRowArray);
+    
+    /**
+     * Returns a sorting function to be used by sort(...) and its variants
+     * with DatabaseObjects. This is intended as a fallback; all classes
+     * that extend this should define their own version.  
+     * 
+     * @return type
+     */
+    public static function getSortFunction() {
+        return function($a, $b) { 
+                return ($a->getDBID() < $b->getDBID());            
+            };        
+    }
      
  
     /**************************************************************************

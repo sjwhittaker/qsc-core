@@ -40,7 +40,36 @@ abstract class BiRelationship {
      protected $firstDBID = null;
      protected $secondDBID = null;
      
- 
+     
+    /**************************************************************************
+     * Static Functions
+     **************************************************************************/
+    /**
+     * This function uses the values in a database row (i.e., an associative
+     * array) to create a new relationship object and set the values of the member 
+     * variables. It must be implemented by all descendants to handle their
+     * specific needs.
+     *
+     * @param $dbRowArray        The row from the database
+     */
+    public abstract static function buildFromDBRow($dbRowArray);
+    
+    /**
+     * Returns a sorting function to be used by sort(...) and its variants
+     * with DatabaseObjects. This is intended as a default; any class that
+     * extends this one can define a custom version.  
+     * 
+     * @return type
+     */
+    public static function getSortFunction() {
+        return function($a, $b) { 
+                return ($a->firstDBID == $b->firstDBID) ?
+                    ($a->secondDBID < $b->secondDBID) :
+                    ($a->firstDBID < $b->firstDBID);
+            };        
+    }
+     
+     
     /**************************************************************************
      * Constructor
      **************************************************************************/
@@ -50,9 +79,28 @@ abstract class BiRelationship {
      * @param $argFirstDBID     The ID of the 'first' element 
      * @param $argSecondDBID    The ID of the 'second' element
      */ 
-     protected function __construct($argFirstDBID, $argSecondDBID) {
-         $this->firstDBID = $argFirstDBID;
-         $this->secondDBID = $argSecondDBID;
-     }
-     
+    protected function __construct($argFirstDBID, $argSecondDBID) {
+        $this->firstDBID = $argFirstDBID;
+        $this->secondDBID = $argSecondDBID;
+    }
+
+    
+    /*************************************************************************
+     * Initialize
+     *************************************************************************/
+    /**
+     * Some relationships may be too complicated to be properly 'initialized'
+     * in the constructor. This function is a placeholder for descendants
+     * to override *if* they need to query the DatabaseManager to complete
+     * themselves.
+     * 
+     * This function should be called in conjunction with the constructor or
+     * buildFromDBRow(...) to create and initialize relationship objects.
+     * 
+     * @param type $dbManager
+     * @param type $argArray
+     */
+    public function initialize($dbManager, $argArray = array()) {
+    }     
+    
 }
