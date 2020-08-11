@@ -68,6 +68,18 @@ abstract class DatabaseObject {
                 return ($a->getDBID() < $b->getDBID());            
             };        
     }
+    
+    /**
+     * Returns whether initialization affects the object's properties such 
+     * that a DB query's ORDER BY is rendered redundant and re-sorting 
+     * using getSortFunction() is required. This is considered the exception
+     * and not the rule, so the default is false.
+     * 
+     * @return boolean
+     */
+    public static function sortAfterInitialization() {
+        return false;
+    }
      
  
     /**************************************************************************

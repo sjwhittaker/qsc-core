@@ -86,7 +86,79 @@ qsc_core_define_constant("QSC_CORE_FORM_FORM_METHOD", "QSC_CORE_FORM_FORM_METHOD
  * @param type $button_remove_id
  * @param type $optional_arguments
  */
-function qsc_core_display_select_transfer_group($label_text, $select_possible_id, $select_chosen_id, $button_add_id, $button_remove_id, $optional_arguments = array()) {
+function qsc_core_form_display_input_and_select_transfer_group($label_text, $input_id, $select_possible_id, $select_chosen_id, $button_add_id, $button_remove_id, $optional_arguments = array()) {
+    $more_html_start = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_START, "");
+
+    $input_help_id = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_INPUT_HELP_ID, "");
+    $input_help_text = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_INPUT_HELP_TEXT, "");
+    $input_max_length = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_INPUT_MAX_LENGTH, 0);
+    
+    $select_possible_help_id = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TRANSFER_POSSIBLE_HELP_ID, "");
+    $select_possible_help_text = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TRANSFER_POSSIBLE_HELP_TEXT, "");
+
+    $select_chosen_help_id = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TRANSFER_CHOSEN_HELP_ID, "");
+    $select_chosen_help_text = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TRANSFER_CHOSEN_HELP_TEXT, "");
+
+    $select_possible_options = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TRANSFER_POSSIBLE_OPTIONS, array());
+    $select_chosen_options = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TRANSFER_CHOSEN_OPTIONS, array());
+    
+    $select_size = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_SIZE, 6);
+    $select_help_id = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_HELP_ID, "");
+    $select_help_text = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_HELP_TEXT, "");
+    
+    $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");
+        
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
+?>
+    <?= $more_html_start; ?>
+    <?php qsc_core_form_display_label($select_possible_id, $label_text); ?> 
+    <div class="form-row input-and-select-transfer-input">
+        <div class="col-12">
+            <input type="text" class="form-control" id="<?= $input_id; ?>" name="<?= $input_id; ?>"<?php qsc_core_echo_if_truthy(array($input_max_length => "maxLength=\"$input_max_length\"", $input_help_id => "aria-describedby=\"$input_help_id\"")); ?>/>
+            <?php qsc_core_form_display_help_text($input_help_id, $input_help_text); ?>
+        </div>
+    </div>
+    <div class="form-row input-and-select-transfer-select">               
+        <div class="col-lg">
+            <select class="form-control" id="<?= $select_possible_id; ?>" name="<?= $select_possible_id; ?>" multiple<?php qsc_core_echo_if_truthy(array($select_size => "size=\"$select_size\"", $select_possible_help_id => "aria-describedby=\"$select_possible_help_id\"")); ?>>
+            <?php foreach ($select_possible_options as $value => $text) : ?>
+                <option value="<?= $value; ?>"><?= $text; ?></option>
+            <?php endforeach; ?>
+            </select>
+            <?php qsc_core_form_display_help_text($select_possible_id, $select_possible_help_text); ?>
+        </div>
+        <div class="col-lg-auto transfer-button-column">
+            <input type="button" id="<?= $button_add_id; ?>" name="<?= $button_add_id; ?>" value="&raquo;">
+            <br/>
+            <input type="button" id="<?= $button_remove_id; ?>" name="<?= $button_remove_id; ?>" value="&laquo;">
+        </div>
+        <div class="col-lg">
+            <select class="form-control" id="<?= $select_chosen_id; ?>" name="<?= $select_chosen_id; ?>[]" multiple<?php qsc_core_echo_if_truthy(array($select_size => "size=\"$select_size\"", $select_chosen_help_id => "aria-describedby=\"$select_chosen_help_id\"", $required => "required")); ?>>
+            <?php foreach ($select_chosen_options as $value => $text) : ?>
+                <option value="<?= $value; ?>"><?= $text; ?></option>
+            <?php endforeach; ?>
+            </select>
+            <?php qsc_core_form_display_help_text($select_chosen_help_id, $select_chosen_help_text); ?>
+        </div>
+        <div class="col-12 input-and-select-transfer-help">
+            <?php qsc_core_form_display_help_text($select_help_id, $select_help_text, $required); ?>               
+        </div>        
+    </div>
+    <?= $more_html_end; ?>        
+<?php
+}
+
+
+/**
+ * 
+ * @param type $label_text
+ * @param type $select_possible_id
+ * @param type $select_chosen_id
+ * @param type $button_add_id
+ * @param type $button_remove_id
+ * @param type $optional_arguments
+ */
+function qsc_core_form_display_select_transfer_group($label_text, $select_possible_id, $select_chosen_id, $button_add_id, $button_remove_id, $optional_arguments = array()) {
     $more_html_start = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_START, "");
     
     $select_possible_help_id = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TRANSFER_POSSIBLE_HELP_ID, "");
