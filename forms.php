@@ -108,7 +108,8 @@ function qsc_core_form_display_input_and_select_transfer_group($label_text, $inp
     
     $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");
         
-    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false) ?
+        'required' : false;        
 ?>
     <?= $more_html_start; ?>
     <?php qsc_core_form_display_label($select_possible_id, $label_text); ?> 
@@ -219,8 +220,9 @@ function qsc_core_form_display_textarea($label_text, $textarea_id, $optional_arg
     $textarea_max_length = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TEXTAREA_MAX_LENGTH, 0);
     $textarea_value = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_TEXTAREA_VALUE, "");
     
-    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
-
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false) ?
+        'required' : false;    
+    
     $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");            
     
 ?>
@@ -275,8 +277,10 @@ function qsc_core_form_display_select($label_text, $select_id, $optional_argumen
     $select_selected_value = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_SELECTED_VALUE, "");
     $select_options = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_OPTIONS, array());
     
-    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
-    $multiple = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_MULTIPLE, false);
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false) ?
+        'required' : false;        
+    $multiple = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_MULTIPLE, false) ?
+        'multiple' : false;    
 
     $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");      
 ?>
@@ -321,7 +325,8 @@ function qsc_core_form_display_input_text($label_text, $input_id, $optional_argu
     $input_max_length = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_INPUT_MAX_LENGTH, 0);
     $input_value = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_INPUT_VALUE, 0);
     
-    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false) ?
+        'required' : false;
 
     $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");            
 ?>
@@ -347,7 +352,8 @@ function qsc_core_form_display_input_date($label_text, $input_id, $optional_argu
     $input_max_length = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_INPUT_MAX_LENGTH, 0);
     $input_value = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_INPUT_VALUE, 0);
     
-    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false) ?
+        'required' : false;
 
     $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");        
 ?>
@@ -379,10 +385,13 @@ function qsc_core_form_display_input_and_select_group($label_text, $input_id, $s
     $select_selected_value = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_SELECTED_VALUE, "");
     $select_selected_text = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_SELECTED_TEXT, "");
     
-    $multiple = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_MULTIPLE, false);
-    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
-    $side_by_side = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SIDE_BY_SIDE, true);
-
+    $multiple = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SELECT_MULTIPLE, false) ?
+        'multiple' : false;
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false) ?
+        'required' : false;    
+    $side_by_side = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_SIDE_BY_SIDE, true) ?
+        'side_by_side' : false;
+        
     $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");    
     ?>
 
@@ -452,9 +461,11 @@ function qsc_core_form_display_checkbox($label_text, $checkbox_id, $optional_arg
     $help_id = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_HELP_ID, "");
     $help_text = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_HELP_TEXT, "");
     
-    $checked = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_CHECKED, false);
-    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false);
-
+    $checked = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_CHECKED, false) ?
+        'checked' : false;    
+    $required = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_REQUIRED, false) ?
+        'required' : false;    
+    
     $more_html_end = qsc_core_get_array_value($optional_arguments, QSC_CORE_FORM_MORE_HTML_END, "");
 ?>
     <?= $more_html_start; ?>
