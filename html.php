@@ -35,7 +35,7 @@ function qsc_core_display_message($message, $type) {
     <div class="message <?= $type; ?>">
         <?php
         echo $message;
-        if ($type != QSC_CORE_MESSAGE_TYPE_SUCCESS) :
+        if ($type == QSC_CORE_MESSAGE_TYPE_ERROR) :
             ?>
             <hr/>
             Please contact the developer and/or systems staff for assistance and include the message above.

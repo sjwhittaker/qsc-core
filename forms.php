@@ -112,7 +112,7 @@ function qsc_core_form_display_input_and_select_transfer_group($label_text, $inp
         'required' : false;        
 ?>
     <?= $more_html_start; ?>
-    <?php qsc_core_form_display_label($select_possible_id, $label_text); ?> 
+    <?php qsc_core_form_display_label($select_possible_id, $label_text, $required); ?> 
     <div class="form-row input-and-select-transfer-input">
         <div class="col-12">
             <input type="text" class="form-control" id="<?= $input_id; ?>" name="<?= $input_id; ?>"<?php qsc_core_echo_if_truthy(array($input_max_length => "maxLength=\"$input_max_length\"", $input_help_id => "aria-describedby=\"$input_help_id\"")); ?>/>
