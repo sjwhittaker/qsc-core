@@ -134,7 +134,8 @@ function qsc_core_form_display_input_and_select_transfer_group($label_text, $inp
             <input type="button" id="<?= $button_remove_id; ?>" name="<?= $button_remove_id; ?>" value="&laquo;">
         </div>
         <div class="col-lg">
-            <select class="form-control" id="<?= $select_chosen_id; ?>" name="<?= $select_chosen_id; ?>[]" multiple<?php qsc_core_echo_if_truthy(array($select_size => "size=\"$select_size\"", $select_chosen_help_id => "aria-describedby=\"$select_chosen_help_id\"", $required => "required")); ?>>
+            <?php /* The 'required' is *not* applied to this select; whether it's non-empty on submission is handled in JS */ ?>
+            <select class="form-control" id="<?= $select_chosen_id; ?>" name="<?= $select_chosen_id; ?>[]" multiple<?php qsc_core_echo_if_truthy(array($select_size => "size=\"$select_size\"", $select_chosen_help_id => "aria-describedby=\"$select_chosen_help_id\"")); ?>>
             <?php foreach ($select_chosen_options as $value => $text) : ?>
                 <option value="<?= $value; ?>"><?= $text; ?></option>
             <?php endforeach; ?>
