@@ -72,7 +72,6 @@ function qscCoreTransferOption(sourceSelectID, destSelectID) {
     let selectionOption = $(sourceSelectID + ' option:selected');
 
     if (selectionOption.length) {
-        $(sourceSelectID).remove(selectionOption);
         $(destSelectID).append(selectionOption);
 
         // Sort the destination options that just had an element added
@@ -99,7 +98,27 @@ function qscCoreSelectAllOptions(selectID) {
        alert($(this).html() + ": " + $(this).prop('selected')); 
     });
     */
-} 
+}
+
+function qscCoreCoordinateSelectedItem(clickEvent, clickedSelectElement, 
+    twinSelectElement) {
+    // What was selected?
+    let clickedOptionIndex = clickEvent.target.index;
+        
+    // What is currently selected?
+    let selectedOptionIndex = $(clickedSelectElement + " option:selected").index();
+        
+    // Check whther something was selected or unselected
+    $(twinSelectElement + ' option:selected').prop("selected", false);            
+    if (selectedOptionIndex !== -1) {
+        // Unselect all other items in the course list and select
+        // just the clicked item
+        $(clickedSelectElement + ' option:selected').prop("selected", false);            
+        $(clickedSelectElement).prop('selectedIndex', clickedOptionIndex);
+        $(twinSelectElement).prop('selectedIndex', clickedOptionIndex);
+    }        
+        
+}
 
 
 /******************************************************************************

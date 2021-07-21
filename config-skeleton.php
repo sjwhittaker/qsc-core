@@ -78,6 +78,7 @@ include_once(QSC_CORE_DIRECTORY_PATH.'/forms.php');
  ***************************************************************************/
 include_once(QSC_CORE_SRC_DATABASE_OBJECTS_DIRECTORY_PATH.'/DatabaseObject.php');
 include_once(QSC_CORE_SRC_DATABASE_OBJECTS_DIRECTORY_PATH.'/BiRelationship.php');
+include_once(QSC_CORE_SRC_DATABASE_OBJECTS_DIRECTORY_PATH.'/TriRelationship.php');
 
 include_once(QSC_CORE_SRC_MANAGERS_DIRECTORY_PATH.'/DatabaseManager.php');
 include_once(QSC_CORE_SRC_MANAGERS_DIRECTORY_PATH.'/SubsetManager.php');
